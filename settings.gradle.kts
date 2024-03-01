@@ -11,11 +11,19 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+
     repositories {
         google()
         mavenCentral()
+    }
+
+    repositories {
+        flatDir {
+            dirs(rootDir.absolutePath +"/libs")
+        }
     }
 }
 

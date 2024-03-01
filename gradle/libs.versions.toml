@@ -17,6 +17,7 @@ androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+nosy-logger = { module = "dev.nosytools:logger" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
