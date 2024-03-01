@@ -20,7 +20,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.lifecycleScope
 import dev.nosytools.loggerexample.ui.theme.NosyLoggerExampleTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
@@ -31,20 +33,30 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             NosyLoggerExampleTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ReportLogs(onLog = { message -> })
+                    ReportLogs(onLog = ::log)
                 }
+            }
+        }
+    }
+
+    private fun log(message: String, level: Level) {
+        lifecycleScope.launch {
+            when (level) {
+                Level.Debug -> logger.debug(message)
+                Level.Info -> logger.info(message)
+                Level.Warning -> logger.warning(message)
+                Level.Error -> logger.error(message)
             }
         }
     }
 }
 
 @Composable
-fun ReportLogs(onLog: (String) -> Unit) {
+fun ReportLogs(onLog: (String, Level) -> Unit) {
     var text by remember {
         mutableStateOf("")
     }
@@ -56,19 +68,19 @@ fun ReportLogs(onLog: (String) -> Unit) {
             label = { Text("What would you like to log?") }
         )
 
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { onLog(text, Level.Debug) }) {
             Text("log as debug")
         }
 
-        FilledTonalButton(onClick = { /*TODO*/ }) {
+        FilledTonalButton(onClick = { onLog(text, Level.Info) }) {
             Text("log as info")
         }
 
-        OutlinedButton(onClick = { /*TODO*/ }) {
+        OutlinedButton(onClick = { onLog(text, Level.Warning) }) {
             Text("log as warning")
         }
 
-        ElevatedButton(onClick = { /*TODO*/ }) {
+        ElevatedButton(onClick = { onLog(text, Level.Error) }) {
             Text("log as error")
         }
     }
@@ -78,6 +90,6 @@ fun ReportLogs(onLog: (String) -> Unit) {
 @Composable
 fun ReportLogsPreview() {
     NosyLoggerExampleTheme {
-        ReportLogs(onLog = { })
+        ReportLogs(onLog = { _, _ -> })
     }
 }
