@@ -2,7 +2,6 @@ package dev.nosytools.loggerexample
 
 import android.app.Application
 import android.widget.Toast
-import dev.nosytools.logger.Config
 import dev.nosytools.logger.Logger
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -15,8 +14,7 @@ class LoggerExampleApp : Application() {
 
     private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
-    // TODO pass api key to logger without config
-    internal val logger = Logger(Config.create(BuildConfig.API_KEY))
+    internal val logger = Logger(BuildConfig.API_KEY)
 
     override fun onCreate() {
         super.onCreate()
