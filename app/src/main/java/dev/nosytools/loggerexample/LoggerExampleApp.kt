@@ -16,7 +16,7 @@ class LoggerExampleApp : Application() {
     private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     // TODO pass api key to logger without config
-    private val logger = Logger(Config.create(BuildConfig.API_KEY))
+    internal val logger = Logger(Config.create(BuildConfig.API_KEY))
 
     override fun onCreate() {
         super.onCreate()
