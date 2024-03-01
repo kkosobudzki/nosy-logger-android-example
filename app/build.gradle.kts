@@ -63,12 +63,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.nosy.logger) {
-        artifact {
-            name = "nosy-logger-release"
-            type = "aar"
-        }
-    }
+    implementation(libs.kotlinx.coroutines)
+    implementation(libs.nosy.logger)
     
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

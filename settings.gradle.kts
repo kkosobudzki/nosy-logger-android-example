@@ -18,12 +18,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-    }
-
-    repositories {
-        flatDir {
-            dirs(rootDir.absolutePath +"/libs")
-        }
+        mavenLocal()
     }
 }
 
