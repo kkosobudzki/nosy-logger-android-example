@@ -20,9 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.lifecycleScope
 import dev.nosytools.loggerexample.ui.theme.NosyLoggerExampleTheme
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
@@ -44,13 +42,11 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun log(message: String, level: Level) {
-        lifecycleScope.launch {
-            when (level) {
-                Level.Debug -> logger.debug(message)
-                Level.Info -> logger.info(message)
-                Level.Warning -> logger.warning(message)
-                Level.Error -> logger.error(message)
-            }
+        when (level) {
+            Level.Debug -> logger.debug(message)
+            Level.Info -> logger.info(message)
+            Level.Warning -> logger.warning(message)
+            Level.Error -> logger.error(message)
         }
     }
 }

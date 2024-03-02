@@ -14,7 +14,9 @@ class LoggerExampleApp : Application() {
 
     private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
-    internal val logger = Logger(BuildConfig.API_KEY)
+    internal val logger by lazy {
+        Logger(applicationContext, BuildConfig.API_KEY)
+    }
 
     override fun onCreate() {
         super.onCreate()
