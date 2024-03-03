@@ -1,41 +1,17 @@
 package dev.nosytools.loggerexample
 
 import android.app.Application
-import android.widget.Toast
 import dev.nosytools.logger.Logger
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 
 class LoggerExampleApp : Application() {
 
-    private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
-
     internal val logger by lazy {
-        Logger(applicationContext, BuildConfig.API_KEY)
+        Logger(applicationContext)
     }
 
     override fun onCreate() {
         super.onCreate()
 
-        val handler = CoroutineExceptionHandler { _, throwable ->
-            Toast.makeText(applicationContext, "Got an error: $throwable", Toast.LENGTH_LONG)
-                .show()
-
-            throwable.printStackTrace()
-        }
-
-        applicationScope.launch(handler) {
-            logger.init()
-        }
-    }
-
-    override fun onLowMemory() {
-        super.onLowMemory()
-
-        applicationScope.cancel()
+        logger.init(BuildConfig.API_KEY)
     }
 }
