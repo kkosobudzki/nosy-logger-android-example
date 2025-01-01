@@ -1,11 +1,11 @@
 [versions]
-agp = "8.7.2"
+agp = "8.7.3"
 kotlin = "1.9.0"
-coreKtx = "1.12.0"
-lifecycleRuntimeKtx = "2.7.0"
-activityCompose = "1.8.2"
-composeBom = "2024.02.02"
-kotlinx = "1.7.1"
+coreKtx = "1.15.0"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.9.3"
+composeBom = "2024.12.01"
+kotlinx = "1.7.3"
 nosyLogger = "2.0.0"
 
 [libraries]
