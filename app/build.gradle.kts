@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "dev.nosytools.loggerexample"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "dev.nosytools.loggerexample"
         minSdk = 28
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -77,7 +77,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.kotlinx.coroutines)
     implementation(libs.nosy.logger)
-    
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
