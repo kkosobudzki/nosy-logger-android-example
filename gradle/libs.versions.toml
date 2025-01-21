@@ -3,10 +3,10 @@ agp = "8.7.3"
 kotlin = "1.9.0"
 coreKtx = "1.15.0"
 lifecycleRuntimeKtx = "2.8.7"
-activityCompose = "1.9.3"
-composeBom = "2024.12.01"
+activityCompose = "1.10.0"
+composeBom = "2025.01.00"
 kotlinx = "1.7.3"
-nosyLogger = "2.0.0"
+nosyLogger = "2.0.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
